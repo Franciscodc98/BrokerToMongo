@@ -104,7 +104,7 @@ public class CloudToMongo implements MqttCallback {
 	private DBObject fixFormat(MqttMessage c) {
 		String rawMessage = c.toString();
 		rawMessage = rawMessage.replace("\"\"", "\"");
-
+		
 		DBObject aux = (DBObject) JSON.parse(rawMessage);
 		Set<String> keys = aux.keySet();
 		List<String> wrongKeys = new ArrayList<String>();
@@ -124,6 +124,14 @@ public class CloudToMongo implements MqttCallback {
 			rawMessage = rawMessage.replace(k, fixedKeys.get(count));
 			count++;
 		}
+		
+		if(!rawMessage.contains("\"cell\"")) {
+			rawMessage = rawMessage.replaceFirst("\\{", "\\{\"cell\":0, ");
+		}
+		
+		
+		
+		
 		return (DBObject) JSON.parse(rawMessage);
 	}
 
