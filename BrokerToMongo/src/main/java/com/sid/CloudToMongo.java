@@ -5,13 +5,12 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.json.JSONObject;
 
 import com.mongodb.*;
 import com.mongodb.util.JSON;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.io.*;
 import javax.swing.*;
 
@@ -73,96 +72,30 @@ public class CloudToMongo implements MqttCallback {
 	public void messageArrived(String topic, MqttMessage c) throws Exception {
 		try {
 			DBObject document_json;
+			document_json = filterSensor(c);
 
-			if (!checkFormat(c)) {
-				document_json = fixFormat(c);
-			} else {
-				document_json = (DBObject) JSON.parse(c.toString());
-			}
-
-			if (verifyDuplicated(document_json)) {
+			Cursor cursor = mongocol.find((DBObject) JSON.parse(document_json.toString()));
+			if (!cursor.hasNext()) {
 				mongocol.insert(document_json);
-				System.out.println("Inserted: " + document_json.toString());
+				System.out.println("ADDED: " + document_json);
 			} else {
-				System.out.println("Duplicater: " + document_json.toString());
+				System.out.println("Duplicado detetado: " + document_json);
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 
-	/**
-	 * 
-	 * This method will fix the message format, it will
-	 * remove extra special characters and fix wrong Keys
-	 * 
-	 * @param c
-	 * @return
-	 */
-	private DBObject fixFormat(MqttMessage c) {
-		String rawMessage = c.toString();
-		rawMessage = rawMessage.replace("\"\"", "\"");
-		
-		DBObject aux = (DBObject) JSON.parse(rawMessage);
-		Set<String> keys = aux.keySet();
-		List<String> wrongKeys = new ArrayList<String>();
-		List<String> fixedKeys = new ArrayList<String>();
-		Pattern p = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]");
-		for (String k : keys) {
-			Matcher m = p.matcher(k);
-			if (m.find()) {
-				wrongKeys.add(k);
-				k = k.replaceAll("[^a-zA-Z0-9]", "");
-				fixedKeys.add("\"" + k + "\"");
-			}
-		}
-
-		int count = 0;
-		for (String k : wrongKeys) {
-			rawMessage = rawMessage.replace(k, fixedKeys.get(count));
-			count++;
-		}
-		
-		if(!rawMessage.contains("\"cell\"")) {
-			rawMessage = rawMessage.replaceFirst("\\{", "\\{\"cell\":0, ");
-		}
-		
-		
-		
-		
-		return (DBObject) JSON.parse(rawMessage);
-	}
-
-	/**
-	 * This method will verify if an JSON object is on the database already, or not
-	 * if it is, will return false if not, will return true
-	 * 
-	 * @param DBObject document_json
-	 * @return
-	 */
-	private boolean verifyDuplicated(DBObject document_json) {
-		DBObject aux = document_json;
-		aux.removeField("_id");
-		Cursor cursor = mongocol.find(aux);
-
-		return !cursor.hasNext();
-	}
-
-	/**
-	 * This method will check if the message format is valid to be parsed to JSON if
-	 * it is a valid format, will return true if not, return false
-	 * 
-	 * @param MqttMessage c
-	 * @return boolean
-	 */
-	private boolean checkFormat(MqttMessage c) {
-		try {
-			JSON.parse(c.toString());
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	private DBObject filterSensor(MqttMessage c) {
+		System.out.println("OI: " + c);
+		String aux = c.toString().replace("\"\"", "\"");
+		aux = aux.replace("sens\"", "\"sens\"");
+		aux = aux.replace("mov\"", "\"mov\"");
+		System.out.println("Depois: " + aux);
+		JSONObject jsonObj = new JSONObject(aux);
+		return (DBObject) JSON.parse(jsonObj.toString());
 	}
 
 	@Override
