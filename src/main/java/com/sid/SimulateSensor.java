@@ -57,7 +57,7 @@ public class SimulateSensor implements MqttCallback {
         str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
         str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+        str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
         d += 0.5D;
         try {
           Thread.sleep(2000L);
@@ -71,7 +71,7 @@ public class SimulateSensor implements MqttCallback {
         str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
         str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+        str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
         b++;
         try {
           Thread.sleep(2000L);
@@ -84,7 +84,7 @@ public class SimulateSensor implements MqttCallback {
         str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
         str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+        str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
         d -= 1.5D;
         try {
           Thread.sleep(2000L);
@@ -97,7 +97,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -108,7 +108,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -119,7 +119,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -130,7 +130,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -141,7 +141,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -152,7 +152,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + '\001' + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + '\001' + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -163,7 +163,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -174,7 +174,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -185,7 +185,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"x\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"x\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -196,7 +196,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + -20 + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" + -20 + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -207,7 +207,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
@@ -218,7 +218,7 @@ public class SimulateSensor implements MqttCallback {
       str = "{\"tmp\":\"" + d + "\",\"hum\":\"" + 35.0D + "\",\"dat\":\"";
       str = str + localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
       str = str + "\",\"tim\":\"" + localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-      str = str + "\",\"cell\":\"" + '\024' + "\",\"mov\":\"" + Character.MIN_VALUE + "\",\"sens\":\"eth\"}";
+      str = str + "\",\"cell\":\"" +  (Math.random()*500 +2800)  + "\",\"mov\":\"" + (Math.random() < 0.8 ? 0 : 1) + "\",\"sens\":\"eth\"}";
       try {
         Thread.sleep(2000L);
       } catch (InterruptedException interruptedException) {}
