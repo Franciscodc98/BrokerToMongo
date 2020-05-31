@@ -80,11 +80,13 @@ public class CloudToMongo implements MqttCallback {
 				document_json = (DBObject) JSON.parse(c.toString());
 			}
 
-			if (verifyDuplicated(document_json)) {
+			if (document_json != null && verifyDuplicated(document_json)) {
 				mongocol.insert(document_json);
 				System.out.println("Inserted: " + document_json.toString());
+			} else if(document_json == null){
+				System.out.println("Message with bad format: " + c);
 			} else {
-				System.out.println("Duplicater: " + document_json.toString());
+				System.out.println("Duplicated: " + document_json.toString());
 			}
 
 		} catch (Exception e) {
@@ -101,6 +103,9 @@ public class CloudToMongo implements MqttCallback {
 	 * @return
 	 */
 	private DBObject fixFormat(MqttMessage c) {
+		
+		try {
+		
 		String rawMessage = c.toString();
 		rawMessage = rawMessage.replace("\"\"", "\"");
 		
@@ -132,6 +137,10 @@ public class CloudToMongo implements MqttCallback {
 		
 		
 		return (DBObject) JSON.parse(rawMessage);
+		
+		}catch (Exception e) {
+			return null;
+		}
 	}
 
 	/**
